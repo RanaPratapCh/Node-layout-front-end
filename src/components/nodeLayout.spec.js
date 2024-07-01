@@ -13,8 +13,7 @@ describe("NodeLayout", () => {
             }
         }
     };
-    it("should test the pop-over modal is exist or not", async () => {
-        // default showModal is false
+    it("should test the popup box is exist or not", async () => {
         expect(wrapper.find('.popup-box').exists()).toBe(false);
         wrapper.vm.showPopUp = true;
         await nextTick();
@@ -32,14 +31,14 @@ describe("NodeLayout", () => {
         });
     });
 
-    it("should test the pop-modal text", async () => {
+    it("should test the popup text", async () => {
         await wrapper.vm.onSelectNode(event, data);
         expect(wrapper.find('.popup-box').exists()).toBe(true);
         expect(wrapper.find('.popup-box #name').text()).toBe('A');
         expect(wrapper.find('.popup-box #description').text()).toBe('This is description of A');
     })
     
-    it("should test the close modal event", async () => {
+    it("should test the close popup event", async () => {
         const spyCloseModal = jest.spyOn(wrapper.vm, 'closePopUp');
         wrapper.vm.showPopUp = false;
         await nextTick();
@@ -53,7 +52,7 @@ describe("NodeLayout", () => {
         expect(wrapper.vm.popUpData).toStrictEqual({});
     });
 
-    it("should test the tree-layout is exist or not", () => {
+    it("should test the node-layout is exist or not", () => {
         expect(wrapper.find('#nodeStructure').exists()).toBe(true);
     });
 });

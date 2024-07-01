@@ -4,7 +4,7 @@ import NodeLayout from './components/nodeLayout.vue';
 
 describe("App", () => {
     const wrapper = shallowMount(App);
-    it("should test the pop-over modal is exist or not", () => {
+    it("should test the node layout is exist or not", () => {
         expect(wrapper.findComponent(NodeLayout).exists()).toBe(true);
     });
 });
