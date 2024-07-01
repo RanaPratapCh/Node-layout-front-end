@@ -27,6 +27,16 @@ const showPopUp = ref(false);
 const popUpData = ref({});
 const selectedNode = ref(null);
 
+onMounted(async () => {
+  try {
+    const response = await axios.get("http://localhost:3000/node-data");
+    responseData.value = response.data;
+    await createNodeStructure(responseData.value);
+  } catch (error) {
+    return error;
+  }
+});
+
 // Function to handle node selection
 function onSelectNode(event, d) {
   showPopUp.value = true;
@@ -50,16 +60,6 @@ function closePopUp() {
     selectedNode.value.select("rect").classed("selected", false);
   }
 }
-
-onMounted(async () => {
-  try {
-    const response = await axios.get("http://localhost:3000/node-data");
-    responseData.value = response.data;
-    await createNodeStructure(responseData.value);
-  } catch (error) {
-    return error;
-  }
-});
 
 function createNodeStructure(nodeData) {
   const width = 1100;
@@ -184,22 +184,10 @@ path {
   stroke: #0069d9;
   stroke-width: 2px;
 }
-
 #name {
   color: #0069d9;
 }
-
-.errorImgallign {
-  width: 50%;
-}
 .heading{
   text-align: center;
-}
-.imgAllign{
-  text-align: center;
-}
-.spinnerAllign{
-  width: 35%;
-  margin-top: 100%;
 }
 </style>
