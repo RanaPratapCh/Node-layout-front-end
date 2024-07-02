@@ -13,6 +13,11 @@ describe("NodeLayout", () => {
             }
         }
     };
+    
+    it("should test the node-layout is exist or not", () => {
+        expect(wrapper.find('#nodeStructure').exists()).toBe(true);
+    });
+
     it("should test the popup box is exist or not", async () => {
         expect(wrapper.find('.popup-box').exists()).toBe(false);
         wrapper.vm.showPopUp = true;
@@ -50,9 +55,5 @@ describe("NodeLayout", () => {
         expect(spyCloseModal).toHaveBeenCalledTimes(1);
         expect(wrapper.vm.showPopUp).toBe(false);
         expect(wrapper.vm.popUpData).toStrictEqual({});
-    });
-
-    it("should test the node-layout is exist or not", () => {
-        expect(wrapper.find('#nodeStructure').exists()).toBe(true);
     });
 });
